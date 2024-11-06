@@ -1,4 +1,5 @@
 window.addEventListener('DOMContentLoaded', () => {
+  console.log('Navbar loaded');
   const navbar = `
     <nav class="bg-gray-900 h-20 flex justify-center items-center text-lg sticky top-0 z-50">
       <div class="container flex justify-between items-center h-20 max-w-screen-xl mx-auto px-12">
