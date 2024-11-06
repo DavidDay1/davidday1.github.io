@@ -34,15 +34,14 @@ window.addEventListener('DOMContentLoaded', () => {
   const toggleButton = document.getElementById('theme-toggle');
   const body = document.body;
 
-  toggleButton.addEventListener('click', () => {
-    body.classList.toggle('dark-mode');
-  });
-
+  // Set the initial theme from localStorage
   if (localStorage.getItem('theme') === 'dark') {
     body.classList.add('dark-mode');
   }
 
+  // Toggle theme and save to localStorage in one click handler
   toggleButton.addEventListener('click', () => {
+    body.classList.toggle('dark-mode');
     if (body.classList.contains('dark-mode')) {
       localStorage.setItem('theme', 'dark');
     } else {
