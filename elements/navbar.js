@@ -28,6 +28,7 @@ window.addEventListener('DOMContentLoaded', () => {
         </div>
       </nav>
     `;
+    document.getElementById('navbar').innerHTML = navbar;
     document.body.insertAdjacentHTML('afterbegin', navbar);
 
     const toggleButton = document.getElementById('theme-toggle');
