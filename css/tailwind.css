@@ -1,0 +1,205 @@
+/* tailwind.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom Global Styles */
+
+/* Font customization */
+@font-face {
+  font-family: 'Inter', sans-serif;
+  src: url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap') format('woff2');
+}
+
+html {
+  font-family: 'Inter', sans-serif;
+}
+
+/* Dark Mode Customization */
+@layer base {
+  body {
+    transition: background-color 0.3s, color 0.3s;
+    background-color: #fff; /* Light mode background */
+    color: #333; /* Light mode text color */
+  }
+
+  body.dark-mode {
+    background-color: #111; /* Dark mode background */
+    color: #fff; /* Dark mode text color */
+  }
+}
+
+/* Navbar Styles */
+@layer components {
+  .navbar {
+    background-color: #111;
+    padding: 1rem 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1.25rem;
+    color: white;
+  }
+
+  .navbar a {
+    color: #fbbf24;
+    text-decoration: none;
+    font-weight: 600;
+  }
+
+  .navbar a:hover {
+    text-decoration: underline;
+  }
+}
+
+/* Container Styles */
+@layer components {
+  .container {
+    margin: 0 auto;
+    padding: 0 2rem;
+    max-width: 1200px;
+  }
+
+  .container.sm {
+    max-width: 640px;
+  }
+
+  .container.md {
+    max-width: 768px;
+  }
+
+  .container.lg {
+    max-width: 1024px;
+  }
+
+  .container.xl {
+    max-width: 1280px;
+  }
+}
+
+/* Footer Styles */
+@layer components {
+  footer {
+    background-color: #111;
+    color: white;
+    padding: 2rem;
+    text-align: center;
+  }
+
+  footer p {
+    font-size: 1rem;
+  }
+}
+
+/* Button Styles */
+@layer components {
+  .btn {
+    background-color: #fbbf24;
+    color: white;
+    padding: 0.5rem 1rem;
+    border-radius: 0.375rem;
+    text-transform: uppercase;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+
+  .btn:hover {
+    background-color: #d97706;
+  }
+
+  .btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(249, 168, 37, 0.4);
+  }
+}
+
+/* Utility Classes for Layout */
+@layer utilities {
+  .max-w-full {
+    max-width: 100%;
+  }
+
+  .text-center {
+    text-align: center;
+  }
+
+  .text-xl {
+    font-size: 1.25rem;
+  }
+
+  .text-2xl {
+    font-size: 1.5rem;
+  }
+
+  .text-4xl {
+    font-size: 2.25rem;
+  }
+
+  .font-bold {
+    font-weight: 700;
+  }
+
+  .font-light {
+    font-weight: 300;
+  }
+
+  .font-semibold {
+    font-weight: 600;
+  }
+
+  .p-4 {
+    padding: 1rem;
+  }
+
+  .p-8 {
+    padding: 2rem;
+  }
+
+  .m-4 {
+    margin: 1rem;
+  }
+
+  .m-8 {
+    margin: 2rem;
+  }
+
+  .bg-gray-900 {
+    background-color: #111;
+  }
+
+  .bg-gray-800 {
+    background-color: #222;
+  }
+
+  .text-white {
+    color: white;
+  }
+
+  .text-gray-100 {
+    color: #f7fafc;
+  }
+
+  .text-gray-700 {
+    color: #4a5568;
+  }
+
+  .rounded-lg {
+    border-radius: 0.5rem;
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Custom Transitions */
+@layer utilities {
+  .transition-all {
+    transition: all 0.3s ease;
+  }
+
+  .transition-opacity {
+    transition: opacity 0.3s ease;
+  }
+}

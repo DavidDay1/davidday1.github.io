@@ -5,213 +5,145 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>David Day</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+          /* Initially hide the popup */
+          .contact-popup {
+            display: none;
+            position: absolute;
+            top: 4.5rem; /* Adjusts distance from Contact link */
+            right: 1rem;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          }
+          /* Transition into same picture to reduce time of fading into a different photo */
+      @keyframes rotateBackground {
+            0% {
+              background-image: url('/images/IMG_4247.jpg');
+            }
+            22%{
+              background-image: url('/images/IMG_4247.jpg');
+            }
+            25% {
+              background-image: url('/images/David-2.jpg');
+            }
+            47% {
+              background-image: url('/images/David-2.jpg');
+            }
+            50% {
+              background-image: url('/images/IMG_3696.jpg');
+            }
+            72% {
+              background-image: url('/images/IMG_3696.jpg');
+            }
+            75% {
+              background-image: url('/images/fish.jpg');
+            }
+            97% {
+              background-image: url('/images/fish.jpg');
+            }
+            100% {
+              background-image: url('/images/IMG_4247.jpg');
+            }
+          }
+
+          body {
+            background-position: center;
+            background-size: cover;
+            animation: rotateBackground 60s infinite linear;
+          }
+    </style>
   </head>
-  <body class="font-sans min-h-screen flex flex-col">
-    <script src="/elements/navbar.js" defer></script>
-    <div id="navbar"></div>
-    <!-- Hero Section -->
-    <div class="mx-auto max-w-2xl px-6 lg:max-w-7xl lg:px-8">
-      <p
-        class="mx-auto mt-2 max-w-lg text-balance text-center text-4xl font-semibold tracking-tight text-gray-950 sm:text-5xl"
-      >
-        Everything you need to know about David Day
-      </p>
-      <div class="mt-10 grid gap-4 sm:mt-16 lg:grid-cols-3 lg:grid-rows-2">
-        <div class="relative lg:row-span-2">
-          <div
-            class="absolute inset-px rounded-lg bg-white lg:rounded-l-[2rem]"
-          ></div>
-          <div
-            class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] lg:rounded-l-[calc(2rem+1px)]"
-          >
-            <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
+  <body class="bg-gray-200">
+    <navbar>
+      <div class="bg-white shadow">
+        <div class="container mx-auto flex justify-between items-center p-4">
+          <h1 class="text-xl font-bold text-gray-800">David Day</h1>
+          <ul class="flex">
+            <li class="ml-4">
+              <a href="/" class="text-gray-800">Home</a>
+            </li>
+            <li class="ml-4">
+              <a href="/abtMe.html" class="text-gray-800">About Me</a>
+            </li>
+            <li class="ml-4">
+              <a href="/projects.html" class="text-gray-800">Projects</a>
+            </li>
+            <li class="ml-4">
+              <a
+                id="contact-link"
+                class="text-gray-800 cursor-pointer"
+                onclick="toggleContactPopup()"
+                >Contact</a
               >
-                Baylor University
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I currently attend Baylor University studying to get a B.S. in
-                Computer Science. I will graduate Spring of 2025
-              </p>
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                Classes
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                <li>Software Engineering 1 and 2</li>
-                <li>Algorithms</li>
-                <li>Data Mining</li>
-                <li>Data Communications</li>
-              </p>
-            </div>
-            <div
-              class="flex flex-1 items-start justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2"
-            >
-              <img
-                class="w-full max-lg:max-w-xs"
-                src="/images/baylor_sig-Photoroom.png"
-                alt=""
-              />
-            </div>
-          </div>
-          <div
-            class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 lg:rounded-l-[2rem]"
-          ></div>
+            </li>
+          </ul>
         </div>
-        <div class="relative max-lg:row-start-1">
-          <div
-            class="absolute inset-px rounded-lg bg-white max-lg:rounded-t-[2rem]"
-          ></div>
-          <div
-            class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-t-[calc(2rem+1px)]"
-          >
-            <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                My Life
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I am from Dallas, Texas and I found an early passion for coding
-                in high school after developing my first game.
-              </p>
-            </div>
-            <div
-              class="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2"
-            >
-              <img
-                class="w-full max-lg:max-w-xs"
-                src="/images/David-2.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-          <div
-            class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5 max-lg:rounded-t-[2rem]"
-          ></div>
-        </div>
-        <div class="relative max-lg:row-start-3 lg:col-start-2 lg:row-start-2">
-          <div class="absolute inset-px rounded-lg bg-white"></div>
-          <div
-            class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)]"
-          >
-            <div class="px-8 pt-8 sm:px-10 sm:pt-10">
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                Hobbies
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                One of my most important hobbies is baseball. I have played
-                baseball for almost my entire life.
-              </p>
-            </div>
-            <div
-              class="flex flex-1 items-center justify-center px-8 max-lg:pb-12 max-lg:pt-10 sm:px-10 lg:pb-2"
-            >
-              <img
-                class="w-full max-lg:max-w-xs"
-                src="/images/IMG_4247.jpg"
-                alt=""
-              />
-            </div>
-          </div>
-          <div
-            class="pointer-events-none absolute inset-px rounded-lg shadow ring-1 ring-black/5"
-          ></div>
-        </div>
-        <div class="relative lg:row-span-2">
-          <div
-            class="absolute inset-px rounded-lg bg-white max-lg:rounded-b-[2rem] lg:rounded-r-[2rem]"
-          ></div>
-          <div
-            class="relative flex h-full flex-col overflow-hidden rounded-[calc(theme(borderRadius.lg)+1px)] max-lg:rounded-b-[calc(2rem+1px)] lg:rounded-r-[calc(2rem+1px)]"
-          >
-            <div class="px-8 pb-3 pt-8 sm:px-10 sm:pb-0 sm:pt-10">
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                Experience
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I have a considerable amount of data analytic and software
-                engineering expereience.
-              </p>
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                Data Analytics
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                Working with Lenginuity LLC, I was able to learn how to properly
-                manage and analyze a real world dataset utilizing Microsoft
-                Asure.
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I worked with automobile loan data and was tasked with rolling
-                loans and insuring integrity of the warehouse.
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                During this internship I was able to remedy several data
-                conflicts and presented my findings and solutions to senior
-                leadership.
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I through these finding a presented new methods for daily
-                portfolio monitoring capabilities.
-              </p>
-              <p
-                class="mt-2 text-lg font-medium tracking-tight text-gray-950 max-lg:text-center"
-              >
-                Software Engineering
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                I have experience doing full-stack, front-end, and back-end
-                development.
-              </p>
-              <p
-                class="mt-2 max-w-lg text-sm/6 text-gray-600 max-lg:text-center"
-              >
-                Languages/Technologies I've used: C++, C, Java, Python,
-                JavaScript, Bash, React, SpringBoot, MySQL, Docker.
-              </p>
-            </div>
-          </div>
+      </div>
+    </navbar>
+
+    <!-- Contact Popup (hidden by default) -->
+    <div id="contact-popup" class="contact-popup">
+      <h2 class="text-2xl font-bold text-gray-800">contact me</h2>
+      <div class="flex items-center">
+        <span class="mr-2">phone:</span>
+        <a class="block text-blue-500 underline" href="tel:9729745852"
+          >(972) 974-5852</a
+        >
+      </div>
+      <div class="flex items-center">
+        <span class="mr-2">email:</span>
+        <a
+          class="block text-blue-500 underline"
+          href="mailto:david_day1@baylor.edu"
+          >david_day1@baylor.edu</a
+        >
+      </div>
+      <div class="flex items-center">
+        <span class="mr-2">linkedin:</span>
+        <a
+          class="block text-blue-500 underline"
+          href="https://www.linkedin.com/in/davidday11"
+          >https://www.linkedin.com/in/davidday11</a
+        >
+      </div>
+    </div>
+
+    <div class="container mx-auto">
+      <div class="flex justify-center items-center h-screen">
+        <div class="bg-white p-8 rounded shadow-lg">
+          <h1 class="text-3xl font-bold text-gray-800">David Day</h1>
+          <p class="text-gray-600">Computer Scientist</p>
+          <div class="mt-4"></div>
         </div>
       </div>
     </div>
-    <!-- Footer -->
-    <footer class="bg-gray-900 text-white py-8 mt-auto">
-      <div class="container mx-auto px-6">
-        <p class="text-center text-sm">
-          Contacts: (972) 974-5852 -
-          <a href="mailto:david_day1@baylor.edu" class="text-blue-600 underline"
-            >david_day1@baylor.edu</a
-          >
-        </p>
-      </div>
-    </footer>
+
+    <script>
+      function toggleContactPopup() {
+        const popup = document.getElementById("contact-popup");
+        // Toggle the display property between none and block
+        popup.style.display = popup.style.display === "none" ? "block" : "none";
+
+        // Add a click event listener to close popup on outside click
+        document.addEventListener("click", closePopupOnClickOutside);
+      }
+
+      function closePopupOnClickOutside(event) {
+        const popup = document.getElementById("contact-popup");
+        const contactLink = document.getElementById("contact-link");
+        // Close popup if the click is outside the popup and not on the contact link
+        if (
+          popup.style.display === "block" &&
+          !popup.contains(event.target) &&
+          event.target !== contactLink
+        ) {
+          popup.style.display = "none";
+          // Remove the event listener after closing
+          document.removeEventListener("click", closePopupOnClickOutside);
+        }
+      }
+    </script>
   </body>
 </html>

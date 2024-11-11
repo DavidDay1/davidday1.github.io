@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Projects - David Day</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+        <style>
+            .contact-popup {
+                display: none;
+                position: absolute;
+                top: 4.5rem;
+                right: 1rem;
+                background-color: white;
+                padding: 1rem;
+                border-radius: 0.5rem;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body class="bg-gray-200">
+        <navbar>
+            <div class="bg-white shadow">
+                <div class="container mx-auto flex justify-between items-center p-4">
+                    <h1 class="text-xl font-bold text-gray-800">David Day</h1>
+                    <ul class="flex">
+                        <li class="ml-4">
+                            <a href="/" class="text-gray-800">Home</a>
+                        </li>
+                        <li class="ml-4">
+                            <a href="/abtMe.html" class="text-gray-800">About Me</a>
+                        </li>
+                        <li class="ml-4">
+                            <a href="/projects.html" class="text-gray-800">Projects</a>
+                        </li>
+                        <li class="ml-4">
+                            <a
+                                id="contact-link"
+                                class="text-gray-800 cursor-pointer"
+                                onclick="toggleContactPopup()"
+                                >Contact</a
+                            >
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </navbar>
+        <div class="container mx-auto p-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="/images/p2p.png" alt="Klab Project" class="w-full h-32 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-2">Klab</h3>
+                <p class="text-gray-600">Peer to Peer network protocol</p>
+                <a href="https://github.com/DavidDay1/Klab" class="text-blue-500 underline mt-2 block">View on GitHub</a>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="https://via.placeholder.com/150" alt="Study Buddy Finder Project" class="w-full h-32 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-2">Study Buddy Finder</h3>
+                <p class="text-gray-600">Web App for finding other users to study with on campus.</p>
+                <a href="https://github.com/Baylor-SEII-Projects-Fall-2023/study-buddy-finder-group-3" class="text-blue-500 underline mt-2 block">View on GitHub</a>
+            </div>
+            <div class="bg-white p-4 rounded-lg shadow">
+                <img src="https://via.placeholder.com/150" alt="Seequill Project" class="w-full h-32 object-cover rounded-t-lg">
+                <h3 class="text-xl font-bold mt-2">Seequill</h3>
+                <p class="text-gray-600">A webpage to easily navigate data on MLB statistics</p>
+                <a href="https://github.com/hkaase/Seequill" class="text-blue-500 underline mt-2 block">View on GitHub</a>
+            </div>
+            </div>
+        <!-- Contact Popup (hidden by default) -->
+        <div id="contact-popup" class="contact-popup">
+            <h2 class="text-2xl font-bold text-gray-800">contact me</h2>
+            <div class="flex items-center">
+                <span class="mr-2">phone:</span>
+                <a class="block text-blue-500 underline" href="tel:9729745852"
+                    >(972) 974-5852</a
+                >
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2">email:</span>
+                <a
+                    class="block text-blue-500 underline"
+                    href="mailto:david_day1@baylor.edu"
+                    >david_day1@baylor.edu</a
+                >
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2">linkedin:</span>
+                <a
+                    class="block text-blue-500 underline"
+                    href="https://www.linkedin.com/in/davidday11"
+                    >https://www.linkedin.com/in/davidday11</a
+                >
+            </div>
+        </div>
+
+        <script>
+            function toggleContactPopup() {
+                const popup = document.getElementById("contact-popup");
+                popup.style.display = popup.style.display === "none" ? "block" : "none";
+                document.addEventListener("click", closePopupOnClickOutside);
+            }
+
+            function closePopupOnClickOutside(event) {
+                const popup = document.getElementById("contact-popup");
+                const contactLink = document.getElementById("contact-link");
+                if (
+                    popup.style.display === "block" &&
+                    !popup.contains(event.target) &&
+                    event.target !== contactLink
+                ) {
+                    popup.style.display = "none";
+                    document.removeEventListener("click", closePopupOnClickOutside);
+                }
+            }
+        </script>
+    </body>
+</html></li>

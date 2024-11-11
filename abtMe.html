@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>School Information</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      /* Initially hide the popup */
+      .contact-popup {
+        display: none;
+        position: absolute;
+        top: 4.5rem; /* Adjusts distance from Contact link */
+        right: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100 text-gray-800">
+    <div class="flex flex-col h-screen justify-start">
+      <navbar>
+        <div class="bg-white shadow">
+          <div class="container mx-auto flex justify-between items-center p-4">
+            <h1 class="text-xl font-bold text-gray-800">David Day</h1>
+            <ul class="flex">
+              <li class="ml-4">
+                <a href="/" class="text-gray-800">Home</a>
+              </li>
+              <li class="ml-4">
+                <a href="/abtMe.html" class="text-gray-800">About Me</a>
+              </li>
+              <li class="ml-4">
+                <a href="/" class="text-gray-800">Projects</a>
+              </li>
+              <li class="ml-4">
+                <a
+                  id="contact-link"
+                  class="text-gray-800 cursor-pointer"
+                  onclick="toggleContactPopup()"
+                  >Contact</a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+      </navbar>
+
+      <!-- Contact Popup (hidden by default) -->
+      <div id="contact-popup" class="contact-popup">
+        <h2 class="text-2xl font-bold text-gray-800">Contact Me</h2>
+        <div class="flex items-center">
+          <span class="mr-2">Phone:</span>
+          <a class="block text-blue-500 underline" href="tel:9729745852"
+            >(972) 974-5852</a
+          >
+        </div>
+        <div class="flex items-center">
+          <span class="mr-2">Email:</span>
+          <a
+            class="block text-blue-500 underline"
+            href="mailto:david_day1@baylor.edu"
+            >david_day1@baylor.edu</a
+          >
+        </div>
+        <div class="flex items-center">
+          <span class="mr-2">LinkedIn:</span>
+          <a
+            class="block text-blue-500 underline"
+            href="https://www.linkedin.com/in/davidday11"
+            >https://www.linkedin.com/in/davidday11</a
+          >
+        </div>
+      </div>
+      <main class="p-6">
+        <section class="mb-6">
+        <h2 class="text-2xl font-semibold mb-2">About Me</h2>
+        <p class="text-lg">
+         My name is David Day. I am a computer science student at Baylor University. 
+        </p>
+      </section>
+        <section class="mb-6">
+          <h2 class="text-2xl font-semibold mb-2">Education</h2>
+          <p class="text-lg">
+            I am currently pursuing a Bachelor's degree in Computer Science and will graduate in May 2025. I graduated from Jesuit College Preparatory School of Dallas in 2021.
+          </p>
+          <h3 class="text-xl font-semibold mt-4">Relavent Courses</h3>
+          <ul class="list-disc list-inside">
+            <li class="text-lg">Data Structures</li>
+            <li class="text-lg">Software Engineering 1 and 2</li>
+            <li class="text-lg">Linear Algebra</li>
+            <li class="text-lg">Algorithms</li>
+            <li class="text-lg">Operating Systems</li>
+            <li class="text-lg">Data Communications</li>
+        </section>
+        <section class="mb-6">
+          <h2 class="text-2xl font-semibold mb-2">For Fun</h2>
+          <ul class="list-disc list-inside">
+            <li class="text-lg">Baylor Club Baseball</li>
+            <li class="text-lg">Baylor Esports Club</li>
+            <li class="text-lg">Movies</li>
+            <li class="text-lg">Explore programming languages</li>
+          </ul>
+        </section>
+        <section class="mb-6">
+          <h2 class="text-2xl font-semibold mb-2">Biography</h2>
+          <p class="text-lg">
+            I am grew up in Dallas, Texas. From my younger years the most I can remember is participating in sports. I believe this is where my competitive nature stems from. I have always wanted to be the best at what I do, and found myself looking to others who are better than me to set my goals. I also grew up being the tech savy child that parents always ask help from and now that I am getting this degree I think that role will only be further solidified. I first found insterest in development in high school. I had a class called intro to computer science. In this class we learned basic Java syntax and our big semester project was to create a game. The instructions were very vauge so I discovered a lot of problems as I went along. I found myself enjoying the problem solving aspect of the project and the class as a whole. 
+        </section>
+      </main>
+    </div>
+
+    <script>
+      function toggleContactPopup() {
+        const popup = document.getElementById("contact-popup");
+        // Toggle the display property between none and block
+        popup.style.display = popup.style.display === "none" ? "block" : "none";
+
+        // Add a click event listener to close popup on outside click
+        document.addEventListener("click", closePopupOnClickOutside);
+      }
+
+      function closePopupOnClickOutside(event) {
+        const popup = document.getElementById("contact-popup");
+        const contactLink = document.getElementById("contact-link");
+        // Close popup if the click is outside the popup and not on the contact link
+        if (
+          popup.style.display === "block" &&
+          !popup.contains(event.target) &&
+          event.target !== contactLink
+        ) {
+          popup.style.display = "none";
+          // Remove the event listener after closing
+          document.removeEventListener("click", closePopupOnClickOutside);
+        }
+      }
+    </script>
+  </body>
+</html>
