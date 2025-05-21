@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF Viewer</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<style>
+    /* Initially hide the popup */
+    .contact-popup {
+        display: none;
+        position: absolute;
+        top: 4.5rem;
+        /* Adjusts distance from Contact link */
+        right: 1rem;
+        background-color: white;
+        padding: 1rem;
+        border-radius: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+</style>
+
+<body class="bg-gray-100 text-gray-800">
+    <navbar>
+        <div class="bg-white shadow fixed w-full z-40">
+            <div class="container mx-auto flex justify-between items-center p-4">
+                <h1 class="text-xl font-bold text-gray-800">David Day</h1>
+                <ul class="flex">
+                    <li class="ml-4">
+                        <a href="/" class="text-gray-800">Home</a>
+                    </li>
+                    <li class="ml-4">
+                        <a href="/abtMe.html" class="text-gray-800">About Me</a>
+                    </li>
+                    <li class="ml-4">
+                        <a href="/projects.html" class="text-gray-800">Projects</a>
+                    </li>
+                    <li class="ml-4">
+                        <a href="/resume.html" class="text-gray-800">Resume</a>
+                    <li class="ml-4">
+                        <a id="contact-link" class="text-gray-800 cursor-pointer"
+                            onclick="toggleContactPopup()">Contact</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </navbar>
+
+    <!-- Contact Popup (hidden by default) -->
+    <div id="contact-popup" class="contact-popup">
+        <h2 class="text-2xl font-bold text-gray-800">contact me</h2>
+        <div class="flex items-center">
+            <span class="mr-2">phone:</span>
+            <a class="block text-blue-500 underline" href="tel:9729745852">(972) 974-5852</a>
+        </div>
+        <div class="flex items-center">
+            <span class="mr-2">email:</span>
+            <a class="block text-blue-500 underline" href="mailto:david21day@outlook.com">david21day@outlook.com</a>
+        </div>
+        <span class="mr-2">linkedin:</span>
+        <a class="block text-blue-500 underline"
+            href="https://www.linkedin.com/in/davidday11">https://www.linkedin.com/in/davidday11</a>
+    </div>
+    <main class="pt-16">
+        <div class="container mx-auto px-4 py-8">
+            <div class="max-w-4xl mx-auto bg-white rounded-lg shadow-md p-6">
+                <!-- PDF Title & Download Button -->
+                <div class="flex justify-between items-center mb-4">
+                    <h1 class="text-2xl font-bold text-gray-800">My Resume</h1>
+                    <a href="/resources/David Day Resume.pdf" download
+                        class="bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded-lg transition">
+                        Download PDF
+                    </a>
+                </div>
+
+                <!-- Embedded PDF Viewer -->
+                <div class="border rounded-lg overflow-hidden">
+                    <embed src="/resources/David Day Resume.pdf" type="application/pdf" width="100%" height="600px"
+                        class="min-h-[80vh]">
+                </div>
+            </div>
+        </div>
+    </main>
+</body>
+<script>
+    function toggleContactPopup() {
+        const popup = document.getElementById("contact-popup");
+        // Toggle the display property between none and block
+        const wasVisible = popup.style.display === "block";
+
+        document.querySelectorAll(".contact-popup").forEach((el) => {
+            el.style.display = "none"; // Hide all popups
+        });
+
+        popup.style.display = wasVisible ? "none" : "block"; // Show or hide the clicked popup
+        if (!wasVisible) {
+            setTimeout(() => {
+                // Add event listener to close the popup when clicking outside
+                document.addEventListener("click", closePopupOnClickOutside);
+            }, 0); // Use setTimeout to ensure the popup is visible before adding the event listener
+        } else {
+            // If the popup is hidden, remove the event listener
+            document.removeEventListener("click", closePopupOnClickOutside);
+        }
+    }
+
+    function closePopupOnClickOutside(event) {
+        const popup = document.getElementById("contact-popup");
+        const contactLink = document.getElementById("contact-link");
+        // Close popup if the click is outside the popup and not on the contact link
+
+        if (!popup.contains(event.target) && !contactLink.contains(event.target)) {
+            popup.style.display = "none";
+            document.removeEventListener("click", closePopupOnClickOutside);
+        }
+    }
+</script>
+
+</html>
