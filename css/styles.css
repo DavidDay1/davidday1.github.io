@@ -1,0 +1,240 @@
+/* Common styles for David Day's website */
+
+/* Contact popup styles */
+.contact-popup {
+    display: none;
+    position: absolute;
+    top: 4.5rem;
+    right: 1rem;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 50;
+}
+
+/* Mobile menu styles */
+.mobile-menu {
+    display: none;
+    position: fixed;
+    top: 4rem;
+    left: 0;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    z-index: 30;
+}
+
+.mobile-menu.active {
+    display: block;
+}
+
+.mobile-menu ul {
+    list-style: none;
+    padding: 1rem;
+    margin: 0;
+}
+
+.mobile-menu li {
+    padding: 0.75rem 0;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.mobile-menu li:last-child {
+    border-bottom: none;
+}
+
+.mobile-menu a {
+    display: block;
+    color: #374151;
+    text-decoration: none;
+    font-size: 1.1rem;
+}
+
+/* Hamburger menu styles */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    padding: 0.5rem;
+}
+
+.hamburger span {
+    width: 25px;
+    height: 3px;
+    background-color: #374151;
+    margin: 3px 0;
+    transition: 0.3s;
+}
+
+/* Project card styles */
+.project-card {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform 0.2s ease-in-out;
+}
+
+.project-card:hover {
+    transform: translateY(-2px);
+}
+
+.project-image-container {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    background-color: #f9fafb;
+}
+
+.project-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    max-height: 200px;
+}
+
+.project-content {
+    flex-shrink: 0;
+}
+
+/* Background animation for home page */
+@keyframes rotateBackground {
+    0% {
+        background-image: url('/images/IMG_4247.jpg');
+    }
+    22%{
+        background-image: url('/images/IMG_4247.jpg');
+    }
+    25% {
+        background-image: url('/images/David-2.jpg');
+    }
+    47% {
+        background-image: url('/images/David-2.jpg');
+    }
+    50% {
+        background-image: url('/images/IMG_3696.jpg');
+    }
+    72% {
+        background-image: url('/images/IMG_3696.jpg');
+    }
+    75% {
+        background-image: url('/images/fish.jpg');
+    }
+    97% {
+        background-image: url('/images/fish.jpg');
+    }
+    100% {
+        background-image: url('/images/IMG_4247.jpg');
+    }
+}
+
+/* Home page specific styles */
+body.home-page {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    animation: rotateBackground 60s infinite linear;
+}
+
+.full-viewport {
+    min-height: calc(100vh - 4rem);
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 768px) {
+    .hamburger {
+        display: flex;
+    }
+
+    .desktop-menu {
+        display: none;
+    }
+
+    .contact-popup {
+        right: 0.5rem;
+        left: 0.5rem;
+        top: 5rem;
+    }
+
+    /* Home page mobile adjustments */
+    .main-content {
+        padding: 1rem;
+    }
+
+    .main-content .bg-white {
+        margin: 0;
+        padding: 1.5rem;
+    }
+
+    .main-content h1 {
+        font-size: 1.75rem;
+    }
+
+    /* About page mobile adjustments */
+    main {
+        padding: 1rem;
+    }
+
+    .section-content {
+        padding: 1rem;
+    }
+
+    h2 {
+        font-size: 1.5rem;
+    }
+
+    .text-lg {
+        font-size: 1rem;
+    }
+
+    /* Projects page mobile adjustments */
+    .container {
+        padding: 1rem;
+    }
+
+    .project-card {
+        margin-bottom: 1rem;
+    }
+
+    .project-image {
+        max-height: 150px;
+    }
+
+    /* Resume page mobile adjustments */
+    .resume-container {
+        padding: 1rem;
+    }
+
+    .resume-header {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .pdf-viewer {
+        height: 500px;
+    }
+}
+
+/* Utility classes */
+.transition {
+    transition: all 0.2s ease-in-out;
+}
+
+.hover\:text-blue-600:hover {
+    color: #2563eb;
+}
+
+.hover\:text-blue-700:hover {
+    color: #1d4ed8;
+}
+
+.hover\:bg-blue-600:hover {
+    background-color: #2563eb;
+} 

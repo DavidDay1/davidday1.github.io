@@ -6,44 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Projects - David Day</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        .contact-popup {
-            display: none;
-            position: absolute;
-            top: 4.5rem;
-            right: 1rem;
-            background-color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        /* Improved project card styling */
-        .project-card {
-            display: flex;
-            flex-direction: column;
-            height: 100%;
-        }
-
-        .project-image-container {
-            flex-grow: 1;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            overflow: hidden;
-        }
-
-        .project-image {
-            width: 100%;
-            height: auto;
-            object-fit: contain;
-            max-height: 200px;
-        }
-
-        .project-content {
-            flex-shrink: 0;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body class="bg-gray-200">
@@ -51,28 +14,50 @@
         <div class="bg-white shadow">
             <div class="container mx-auto flex justify-between items-center p-4">
                 <h1 class="text-xl font-bold text-gray-800">David Day</h1>
-                <ul class="flex">
+                
+                <!-- Desktop Menu -->
+                <ul class="desktop-menu flex">
                     <li class="ml-4">
-                        <a href="/" class="text-gray-800">Home</a>
+                        <a href="/" class="text-gray-800 hover:text-blue-600 transition">Home</a>
                     </li>
                     <li class="ml-4">
-                        <a href="/abtMe.html" class="text-gray-800">About Me</a>
+                        <a href="/abtMe.html" class="text-gray-800 hover:text-blue-600 transition">About Me</a>
                     </li>
                     <li class="ml-4">
-                        <a href="/projects.html" class="text-gray-800">Projects</a>
+                        <a href="/projects.html" class="text-gray-800 hover:text-blue-600 transition">Projects</a>
                     </li>
                     <li class="ml-4">
-                        <a href="/resume.html" class="text-gray-800">Resume</a>
+                        <a href="/resume.html" class="text-gray-800 hover:text-blue-600 transition">Resume</a>
+                    </li>
                     <li class="ml-4">
-                        <a id="contact-link" class="text-gray-800 cursor-pointer"
+                        <a id="contact-link" class="text-gray-800 cursor-pointer hover:text-blue-600 transition"
                             onclick="toggleContactPopup()">Contact</a>
                     </li>
                 </ul>
+
+                <!-- Mobile Hamburger Menu -->
+                <div class="hamburger" onclick="toggleMobileMenu()">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
             </div>
         </div>
     </navbar>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+        <ul>
+            <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
+            <li><a href="/abtMe.html" onclick="closeMobileMenu()">About Me</a></li>
+            <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
+            <li><a href="/resume.html" onclick="closeMobileMenu()">Resume</a></li>
+            <li><a href="#" onclick="toggleContactPopup(); closeMobileMenu()">Contact</a></li>
+        </ul>
+    </div>
+
     <div class="container mx-auto p-4">
+        <h1 class="text-3xl font-bold text-gray-800 mb-8 text-center">My Projects</h1>
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <!-- Project 1 -->
             <div class="project-card bg-white rounded-lg shadow overflow-hidden">
@@ -80,24 +65,22 @@
                     <img src="/images/p2p.png" alt="Klab Project" class="project-image">
                 </div>
                 <div class="project-content p-4 border-t">
-                    <h3 class="text-xl font-bold">Klab</h3>
-                    <p class="text-gray-600 mt-1">Peer to Peer network protocol for sending and downloading files</p>
-                    <a href="https://github.com/DavidDay1/Klab" class="text-blue-500 underline mt-2 block">View on
-                        GitHub</a>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Klab</h3>
+                    <p class="text-gray-600 mb-3">Peer to Peer network protocol for sending and downloading files</p>
+                    <a href="https://github.com/DavidDay1/Klab" class="text-blue-500 underline hover:text-blue-700 transition">View on GitHub</a>
                 </div>
             </div>
 
             <!-- Project 2 - With GIF -->
             <div class="project-card bg-white rounded-lg shadow overflow-hidden">
-                <div class="project-image-container p-4 bg-gray-100">
+                <div class="project-image-container p-4">
                     <img src="/images/2025-04-28 21-11-23.gif" alt="Molecule Generation" class="project-image">
                 </div>
                 <div class="project-content p-4 border-t">
-                    <h3 class="text-xl font-bold">Molecule Generation</h3>
-                    <p class="text-gray-600 mt-1">Graph based generative adversarial neural network that can create
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Molecule Generation</h3>
+                    <p class="text-gray-600 mb-3">Graph based generative adversarial neural network that can create
                         novel and valid molecules</p>
-                    <a href="https://github.com/ElTragedy/capstone" class="text-blue-500 underline mt-2 block">View on
-                        Github</a>
+                    <a href="https://github.com/ElTragedy/capstone" class="text-blue-500 underline hover:text-blue-700 transition">View on GitHub</a>
                 </div>
             </div>
 
@@ -107,10 +90,10 @@
                     <img src="/images/study buddies.png" alt="Study Buddy Finder Project" class="project-image">
                 </div>
                 <div class="project-content p-4 border-t">
-                    <h3 class="text-xl font-bold">Study Buddy Finder</h3>
-                    <p class="text-gray-600 mt-1">Web App for finding other users to study with on campus.</p>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Study Buddy Finder</h3>
+                    <p class="text-gray-600 mb-3">Web App for finding other users to study with on campus.</p>
                     <a href="https://github.com/Baylor-SEII-Projects-Fall-2023/study-buddy-finder-group-3"
-                        class="text-blue-500 underline mt-2 block">View on GitHub</a>
+                        class="text-blue-500 underline hover:text-blue-700 transition">View on GitHub</a>
                 </div>
             </div>
 
@@ -120,10 +103,9 @@
                     <img src="https://via.placeholder.com/300x200" alt="Seequill Project" class="project-image">
                 </div>
                 <div class="project-content p-4 border-t">
-                    <h3 class="text-xl font-bold">Seequill</h3>
-                    <p class="text-gray-600 mt-1">A webpage to easily navigate data on MLB statistics</p>
-                    <a href="https://github.com/hkaase/Seequill" class="text-blue-500 underline mt-2 block">View on
-                        GitHub</a>
+                    <h3 class="text-xl font-bold text-gray-800 mb-2">Seequill</h3>
+                    <p class="text-gray-600 mb-3">A webpage to easily navigate data on MLB statistics</p>
+                    <a href="https://github.com/hkaase/Seequill" class="text-blue-500 underline hover:text-blue-700 transition">View on GitHub</a>
                 </div>
             </div>
         </div>
@@ -131,55 +113,24 @@
 
     <!-- Contact Popup (hidden by default) -->
     <div id="contact-popup" class="contact-popup">
-        <h2 class="text-2xl font-bold text-gray-800">contact me</h2>
-        <div class="flex items-center">
-            <span class="mr-2">phone:</span>
-            <a class="block text-blue-500 underline" href="tel:9729745852">(972) 974-5852</a>
-        </div>
-        <div class="flex items-center">
-            <span class="mr-2">email:</span>
-            <a class="block text-blue-500 underline" href="mailto:david_day1@baylor.edu">david_day1@baylor.edu</a>
-        </div>
-        <div class="flex items-center">
-            <span class="mr-2">linkedin:</span>
-            <a class="block text-blue-500 underline"
-                href="https://www.linkedin.com/in/davidday11">https://www.linkedin.com/in/davidday11</a>
+        <h2 class="text-2xl font-bold text-gray-800 mb-3">Contact Me</h2>
+        <div class="space-y-2">
+            <div class="flex items-center">
+                <span class="mr-2 font-medium">Phone:</span>
+                <a class="text-blue-500 underline" href="tel:9729745852">(972) 974-5852</a>
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2 font-medium">Email:</span>
+                <a class="text-blue-500 underline" href="mailto:david_day1@baylor.edu">david_day1@baylor.edu</a>
+            </div>
+            <div class="flex items-center">
+                <span class="mr-2 font-medium">LinkedIn:</span>
+                <a class="text-blue-500 underline" href="https://www.linkedin.com/in/davidday11">davidday11</a>
+            </div>
         </div>
     </div>
 
-
-    <script>
-        function toggleContactPopup() {
-            const popup = document.getElementById("contact-popup");
-            // Toggle the display property between none and block
-            const wasVisible = popup.style.display === "block";
-
-            document.querySelectorAll(".contact-popup").forEach((el) => {
-                el.style.display = "none"; // Hide all popups
-            });
-
-            popup.style.display = wasVisible ? "none" : "block"; // Show or hide the clicked popup
-            if (!wasVisible) {
-                setTimeout(() => {
-                    // Add event listener to close the popup when clicking outside
-                    document.addEventListener("click", closePopupOnClickOutside);
-                }, 0); // Use setTimeout to ensure the popup is visible before adding the event listener
-            } else {
-                // If the popup is hidden, remove the event listener
-                document.removeEventListener("click", closePopupOnClickOutside);
-            }
-        }
-        function closePopupOnClickOutside(event) {
-            const popup = document.getElementById("contact-popup");
-            const contactLink = document.getElementById("contact-link");
-            // Close popup if the click is outside the popup and not on the contact link
-
-            if (!popup.contains(event.target) && !contactLink.contains(event.target)) {
-                popup.style.display = "none";
-                document.removeEventListener("click", closePopupOnClickOutside);
-            }
-        }
-    </script>
+    <script src="/elements/common.js"></script>
 </body>
 
 </html>

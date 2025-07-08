@@ -5,163 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>David Day</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <style>
-        
-          /* Transition into same picture to reduce time of fading into a different photo */
-      @keyframes rotateBackground {
-            0% {
-              background-image: url('/images/IMG_4247.jpg');
-            }
-            22%{
-              background-image: url('/images/IMG_4247.jpg');
-            }
-            25% {
-              background-image: url('/images/David-2.jpg');
-            }
-            47% {
-              background-image: url('/images/David-2.jpg');
-            }
-            50% {
-              background-image: url('/images/IMG_3696.jpg');
-            }
-            72% {
-              background-image: url('/images/IMG_3696.jpg');
-            }
-            75% {
-              background-image: url('/images/fish.jpg');
-            }
-            97% {
-              background-image: url('/images/fish.jpg');
-            }
-            100% {
-              background-image: url('/images/IMG_4247.jpg');
-            }
-          }
-
-          body {
-            margin: 0;
-            padding: 0;
-            height: 100vh;
-            background-position: center;
-            background-size: cover;
-            background-repeat: no-repeat;
-            background-attachment: fixed;
-            animation: rotateBackground 60s infinite linear;
-          }
-
-          .full-viewport {
-            min-height: calc(100vh - 4rem); /* Adjust for navbar height */
-          }
-
-          .contact-popup {
-            display: none;
-            position: absolute;
-            top: 4.5rem; 
-            right: 1rem;
-            background-color: white;
-            padding: 1rem;
-            border-radius: 0.5rem;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            z-index: 50;
-          }
-    </style>
+    <link rel="stylesheet" href="/css/styles.css">
   </head>
-  <body class="relative">
+  <body class="relative home-page">
     <navbar>
       <div class="bg-white shadow fixed w-full z-40">
         <div class="container mx-auto flex justify-between items-center p-4">
           <h1 class="text-xl font-bold text-gray-800">David Day</h1>
-          <ul class="flex">
+          
+          <!-- Desktop Menu -->
+          <ul class="desktop-menu flex">
             <li class="ml-4">
-              <a href="/" class="text-gray-800">Home</a>
+              <a href="/" class="text-gray-800 hover:text-blue-600 transition">Home</a>
             </li>
             <li class="ml-4">
-              <a href="/abtMe.html" class="text-gray-800">About Me</a>
+              <a href="/abtMe.html" class="text-gray-800 hover:text-blue-600 transition">About Me</a>
             </li>
             <li class="ml-4">
-              <a href="/projects.html" class="text-gray-800">Projects</a>
+              <a href="/projects.html" class="text-gray-800 hover:text-blue-600 transition">Projects</a>
             </li>
             <li class="ml-4">
-              <a href="/resume.html" class="text-gray-800">Resume</a>
+              <a href="/resume.html" class="text-gray-800 hover:text-blue-600 transition">Resume</a>
+            </li>
             <li class="ml-4">
               <a
                 id="contact-link"
-                class="text-gray-800 cursor-pointer"
+                class="text-gray-800 cursor-pointer hover:text-blue-600 transition"
                 onclick="toggleContactPopup()"
                 >Contact</a
               >
             </li>
           </ul>
+
+          <!-- Mobile Hamburger Menu -->
+          <div class="hamburger" onclick="toggleMobileMenu()">
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
         </div>
       </div>
     </navbar>
 
+    <!-- Mobile Menu -->
+    <div id="mobile-menu" class="mobile-menu">
+      <ul>
+        <li><a href="/" onclick="closeMobileMenu()">Home</a></li>
+        <li><a href="/abtMe.html" onclick="closeMobileMenu()">About Me</a></li>
+        <li><a href="/projects.html" onclick="closeMobileMenu()">Projects</a></li>
+        <li><a href="/resume.html" onclick="closeMobileMenu()">Resume</a></li>
+        <li><a href="#" onclick="toggleContactPopup(); closeMobileMenu()">Contact</a></li>
+      </ul>
+    </div>
+
     <!-- Contact Popup (hidden by default) -->
     <div id="contact-popup" class="contact-popup">
-      <h2 class="text-2xl font-bold text-gray-800">contact me</h2>
-      <div class="flex items-center">
-        <span class="mr-2">phone:</span>
-        <a class="block text-blue-500 underline" href="tel:9729745852"
-          >(972) 974-5852</a
-        >
-      </div>
-      <div class="flex items-center">
-        <span class="mr-2">email:</span>
-        <a
-          class="block text-blue-500 underline"
-          href="mailto:david21day@outlook.com"
-          >david21day@outlook.com</a>
-      </div>
-      <div class="flex items-center">
-        <span class="mr-2">linkedin:</span>
-        <a
-          class="block text-blue-500 underline"
-          href="https://www.linkedin.com/in/davidday11"
-          >https://www.linkedin.com/in/davidday11</a
-        >
+      <h2 class="text-2xl font-bold text-gray-800 mb-3">Contact Me</h2>
+      <div class="space-y-2">
+        <div class="flex items-center">
+          <span class="mr-2 font-medium">Phone:</span>
+          <a class="text-blue-500 underline" href="tel:9729745852">(972) 974-5852</a>
+        </div>
+        <div class="flex items-center">
+          <span class="mr-2 font-medium">Email:</span>
+          <a class="text-blue-500 underline" href="mailto:david21day@outlook.com">david21day@outlook.com</a>
+        </div>
+        <div class="flex items-center">
+          <span class="mr-2 font-medium">LinkedIn:</span>
+          <a class="text-blue-500 underline" href="https://www.linkedin.com/in/davidday11">davidday11</a>
+        </div>
       </div>
     </div>
 
-      <div class="pt-16 full-viewport flex items-center justify-center">
-        <div class="bg-white p-8 rounded shadow-lg mx-4">
-          <h1 class="text-3xl font-bold text-gray-800">David Day</h1>
-          <p class="text-gray-600">Computer Scientist</p>
-          <div class="mt-4"></div>
-        </div>
+    <div class="pt-16 full-viewport flex items-center justify-center main-content">
+      <div class="bg-white p-8 rounded shadow-lg mx-4 text-center">
+        <h1 class="text-3xl font-bold text-gray-800 mb-2">David Day</h1>
+        <p class="text-gray-600 text-lg">Computer Scientist</p>
+        <div class="mt-4"></div>
       </div>
+    </div>
 
-    <script>
-      function toggleContactPopup() {
-        const popup = document.getElementById("contact-popup");
-        // Toggle the display property between none and block
-        const wasVisible = popup.style.display === "block";
-
-        document.querySelectorAll(".contact-popup").forEach((el) => {
-          el.style.display = "none"; // Hide all popups
-        });
-
-        popup.style.display = wasVisible ? "none" : "block"; // Show or hide the clicked popup
-        if (!wasVisible) {
-          setTimeout(() => {
-            // Add event listener to close the popup when clicking outside
-            document.addEventListener("click", closePopupOnClickOutside);
-          }, 0); // Use setTimeout to ensure the popup is visible before adding the event listener
-        } else {
-          // If the popup is hidden, remove the event listener
-          document.removeEventListener("click", closePopupOnClickOutside);
-        }
-      }
-
-      function closePopupOnClickOutside(event) {
-        const popup = document.getElementById("contact-popup");
-        const contactLink = document.getElementById("contact-link");
-        // Close popup if the click is outside the popup and not on the contact link
-        
-        if (!popup.contains(event.target) && !contactLink.contains(event.target)) {
-          popup.style.display = "none";
-          document.removeEventListener("click", closePopupOnClickOutside);
-        }
-      }
-    </script>
+    <script src="/elements/common.js"></script>
   </body>
 </html>
