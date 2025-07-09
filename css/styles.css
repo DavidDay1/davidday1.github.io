@@ -100,6 +100,13 @@
     flex-shrink: 0;
 }
 
+/* PDF Viewer styles */
+.pdf-viewer {
+    width: 100%;
+    height: 600px;
+    border: none;
+}
+
 /* Background animation for home page */
 @keyframes rotateBackground {
     0% {
@@ -222,8 +229,13 @@ body.home-page {
         align-items: flex-start;
     }
 
+    /* PDF Viewer mobile fixes */
     .pdf-viewer {
-        height: 500px;
+        height: 400px !important;
+        min-height: 400px !important;
+        max-height: 400px !important;
+        width: 100% !important;
+        object-fit: contain;
     }
 }
 
@@ -239,6 +251,14 @@ body.home-page {
         display: none !important;
         visibility: hidden !important;
         opacity: 0 !important;
+    }
+
+    /* PDF Viewer for very small screens */
+    .pdf-viewer {
+        height: 300px !important;
+        min-height: 300px !important;
+        max-height: 300px !important;
+        width: 100% !important;
     }
 }
 
