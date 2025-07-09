@@ -49,24 +49,26 @@ function toggleContactPopup() {
         return;
     }
 
-    const wasVisible = popup.style.display === "block" || popup.style.display === "";
+    // Check if popup is currently visible by checking computed style
+    const isVisible = popup.style.display === "block" || 
+                     window.getComputedStyle(popup).display === "block";
 
-    // Hide all contact popups first
-    document.querySelectorAll(".contact-popup").forEach((el) => {
-        el.style.display = "none";
-    });
-
-    // Toggle the current popup
-    popup.style.display = wasVisible ? "none" : "block";
-    
-    if (!wasVisible) {
-        // Show popup
+    if (isVisible) {
+        // Hide popup
+        popup.style.display = "none";
+        document.removeEventListener("click", closePopupOnClickOutside);
+    } else {
+        // Show popup - hide all others first
+        document.querySelectorAll(".contact-popup").forEach((el) => {
+            el.style.display = "none";
+        });
+        
+        popup.style.display = "block";
+        
+        // Add click outside listener
         setTimeout(() => {
             document.addEventListener("click", closePopupOnClickOutside);
         }, 0);
-    } else {
-        // Hide popup
-        document.removeEventListener("click", closePopupOnClickOutside);
     }
 }
 
