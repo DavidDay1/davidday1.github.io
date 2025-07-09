@@ -2,7 +2,7 @@
 
 /* Contact popup styles */
 .contact-popup {
-    display: none;
+    display: none !important;
     position: absolute;
     top: 4.5rem;
     right: 1rem;
@@ -15,7 +15,7 @@
 
 /* Mobile menu styles */
 .mobile-menu {
-    display: none;
+    display: none !important;
     position: fixed;
     top: 4rem;
     left: 0;
@@ -26,7 +26,7 @@
 }
 
 .mobile-menu.active {
-    display: block;
+    display: block !important;
 }
 
 .mobile-menu ul {
@@ -53,10 +53,11 @@
 
 /* Hamburger menu styles */
 .hamburger {
-    display: none;
+    display: none !important;
     flex-direction: column;
     cursor: pointer;
     padding: 0.5rem;
+    z-index: 50;
 }
 
 .hamburger span {
@@ -146,14 +147,18 @@ body.home-page {
     min-height: calc(100vh - 4rem);
 }
 
-/* Mobile responsive adjustments */
-@media (max-width: 768px) {
+/* Mobile responsive adjustments - Multiple breakpoints for better mobile support */
+@media (max-width: 768px), (max-width: 767px), (max-device-width: 768px) {
     .hamburger {
-        display: flex;
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
     }
 
     .desktop-menu {
-        display: none;
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 
     .contact-popup {
@@ -219,6 +224,36 @@ body.home-page {
 
     .pdf-viewer {
         height: 500px;
+    }
+}
+
+/* Additional mobile breakpoint for very small screens */
+@media (max-width: 480px), (max-device-width: 480px) {
+    .hamburger {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .desktop-menu {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
+    }
+}
+
+/* Force hamburger visibility on touch devices */
+@media (hover: none) and (pointer: coarse) {
+    .hamburger {
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+    }
+
+    .desktop-menu {
+        display: none !important;
+        visibility: hidden !important;
+        opacity: 0 !important;
     }
 }
 
