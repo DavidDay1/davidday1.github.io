@@ -30,28 +30,42 @@ function ensureMobileMenuVisibility() {
 
 function toggleMobileMenu() {
     const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.toggle("active");
+    if (mobileMenu) {
+        mobileMenu.classList.toggle("active");
+    }
 }
 
 function closeMobileMenu() {
     const mobileMenu = document.getElementById("mobile-menu");
-    mobileMenu.classList.remove("active");
+    if (mobileMenu) {
+        mobileMenu.classList.remove("active");
+    }
 }
 
 function toggleContactPopup() {
     const popup = document.getElementById("contact-popup");
-    const wasVisible = popup.style.display === "block";
+    if (!popup) {
+        console.error("Contact popup element not found");
+        return;
+    }
 
+    const wasVisible = popup.style.display === "block" || popup.style.display === "";
+
+    // Hide all contact popups first
     document.querySelectorAll(".contact-popup").forEach((el) => {
         el.style.display = "none";
     });
 
+    // Toggle the current popup
     popup.style.display = wasVisible ? "none" : "block";
+    
     if (!wasVisible) {
+        // Show popup
         setTimeout(() => {
             document.addEventListener("click", closePopupOnClickOutside);
         }, 0);
     } else {
+        // Hide popup
         document.removeEventListener("click", closePopupOnClickOutside);
     }
 }
@@ -59,6 +73,10 @@ function toggleContactPopup() {
 function closePopupOnClickOutside(event) {
     const popup = document.getElementById("contact-popup");
     const contactLink = document.getElementById("contact-link");
+    
+    if (!popup || !contactLink) {
+        return;
+    }
     
     if (!popup.contains(event.target) && !contactLink.contains(event.target)) {
         popup.style.display = "none";
@@ -89,4 +107,15 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // Check again after a short delay to ensure CSS has loaded
     setTimeout(ensureMobileMenuVisibility, 100);
+    
+    // Debug: Check if contact popup elements exist
+    const popup = document.getElementById("contact-popup");
+    const contactLink = document.getElementById("contact-link");
+    
+    if (!popup) {
+        console.warn("Contact popup element not found");
+    }
+    if (!contactLink) {
+        console.warn("Contact link element not found");
+    }
 }); 

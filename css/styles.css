@@ -2,7 +2,7 @@
 
 /* Contact popup styles */
 .contact-popup {
-    display: none !important;
+    display: none;
     position: absolute;
     top: 4.5rem;
     right: 1rem;
